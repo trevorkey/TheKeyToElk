@@ -1,0 +1,138 @@
+---
+- name: Configure_Docker
+  hosts: webservers
+  become: true
+  tasks:
+  - name: install docker.io (state=present is optional)
+    apt:
+      update_cache: yes
+      name: docker.io
+      state: present
+
+  - name: install python3-pip (state=present is optional)
+    apt:
+      name: python3-pip
+      state: present
+
+  - name: install apache docker (state=present is optinal)
+    pip:
+      name: docker
+      state: present
+
+  - name: download and lauch a docker web container
+    docker_container:
+      name: dvwa
+      image: cyberxsecurity/dvwa
+      state: started
+      restart_policy: always
+      published_ports: 80:80
+
+
+- name: Configure Elk
+  hosts: elk
+  become: true
+  tasks:
+
+  - name: vm_max
+    command: sysctl -w vm.max_map_count=262144
+
+  - name: Use more memory
+    sysctl:
+      name: vm.max_map_count
+      value: '262144'
+      state: present
+      reload: yes
+
+  - name: install docker.io (state=present is optional)
+    apt:
+      update_cache: yes
+      name: docker.io
+      state: present
+
+  - name: install python3-pip (state=present is optional)
+    apt:
+      name: python3-pip
+      state: present
+
+  - name: install apache docker (state=present is optinal)
+    pip:
+      name: docker
+      state: present
+
+  - name: Download elk
+    docker_container:
+      name: elk-docker
+      image: sebp/elk:761
+      state: started
+      restart_policy: always
+      published_ports:
+        - 5601:5601
+        - 9200:9200
+        - 5044:5044
+
+  - name: Enable docker on boot
+    systemd:
+      name: docker
+      enabled: yes
+
+
+- name: filebeat installer
+  hosts: webservers
+  become: true
+  tasks:
+
+  - name: download .deb
+    command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.4.0-amd64.deb
+
+  - name: install .deb
+    command: dpkg -i filebeat-7.4.0-amd64.deb
+
+  - name: drop in filebeat.yml
+    copy:
+      src: /etc/ansible/filebeat-config.yml
+      dest: /etc/filebeat/filebeat.yml
+
+  - name: enable and configure system module
+    command: filebeat modules enable system
+
+  - name: setup filebeat
+    command: filebeat setup
+
+  - name: start filebeat service
+    command: service filebeat start
+
+  - name: enable service filebeat on boot
+    systemd:
+      name: filebeat
+      enabled: yes
+
+
+- name: metricbeat installer
+  hosts: webservers
+  become: true
+  tasks:
+
+  - name: download metricbeat .deb
+    command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.4.0-amd64.deb
+
+  - name: install metricbeat .deb
+    command: dpkg -i metricbeat-7.4.0-amd64.deb
+
+  - name: Copy metricbeat config
+    copy:
+      src: /etc/metricbeat/metricbeat-config.yml
+      dest: /etc/metricbeat/metricbeat.yml
+
+  - name: enable metric module docker
+    command: metricbeat modules enable docker
+
+  - name: setup metricbeat
+    command: metricbeat setup -e
+
+  - name: start metricbeat service
+    command: service metricbeat start
+
+  - name: enable service metricbeat on boot
+    systemd:
+      name: metricbeat
+      enabled: yes
