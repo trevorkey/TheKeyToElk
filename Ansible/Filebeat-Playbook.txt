@@ -28,29 +28,3 @@
     systemd:
       name: filebeat
       enabled: yes
-
-
-  - name: download metricbeat .deb
-    command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.4.0-amd64.deb
-
-  - name: install metric .deb
-    command: dpkg -i metricbeat-7.4.0-amd64.deb
-
-  - name: drop in metricbeat
-    copy:
-      src: /etc/ansible/metricbeat
-      dest: /etc/ansible/metricbeat
-
-  - name: enable and configure metric module docker
-    command: metricbeat modules enable docker
-
-  - name: setup metricbeat
-    command: metricbeat setup
-
-#  - name: start filebeat service
-#    command: service filebeat start
-
-  - name: enable service metricbeat on boot
-    systemd:
-      name: metricbeat
-      enabled: yes
