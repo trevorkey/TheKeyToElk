@@ -43,8 +43,8 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the Jump Box Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- 71.142.240.49
 
 Machines within the network can only be accessed by _____.
 - _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
@@ -73,7 +73,11 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+| Name     | IP Address |
+|----------|------------|
+| Web-1    | 10.0.0.5   |
+| Web-2    | 10.0.0.8   |
+| Web-3    | 10.0.0.13  |
 
 We have installed the following Beats on these machines:
 - _TODO: Specify which Beats you successfully installed_
