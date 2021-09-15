@@ -29,15 +29,15 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 - _TODO: What does Metricbeat record?_
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.4   | Linux            |
-| Web-1    | DVWS     | 10.0.0.5   | Linux            |
-| Web-2    | DVWS     | 10.0.0.8   | Linux            |
-| Web-3    | DVWS     | 10.0.0.13  | Linux            |
-| Elk      | Elkstack | 10.1.0.4   | Linux            |
+| Name     | Function      | IP Address      | Operating System |
+|----------|---------------|-----------------|------------------|
+| Jump Box | Gateway       | 10.0.0.4        | Linux            |
+| Web-1    | DVWS          | 10.0.0.5        | Linux            |
+| Web-2    | DVWS          | 10.0.0.8        | Linux            |
+| Web-3    | DVWS          | 10.0.0.13       | Linux            |
+| Elk      | Elkstack      | 10.1.0.4        | Linux            |
+| DVWS LB  | Load Balancer | 52.156.77.158   | Linux            |
 
 ### Access Policies
 
@@ -46,8 +46,8 @@ The machines on the internal network are not exposed to the public Internet.
 Only the Jump Box Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - 71.142.240.49
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by the Jump Box Provisioner ansible container.
+- 10.0.0.4
 
 A summary of the access policies in place can be found in the table below.
 
