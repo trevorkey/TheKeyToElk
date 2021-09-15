@@ -33,10 +33,11 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+| Jump Box | Gateway  | 10.0.0.4   | Linux            |
+| Web-1    | DVWS     | 10.0.0.5   | Linux            |
+| Web-2    | DVWS     | 10.0.0.8   | Linux            |
+| Web-3    | DVWS     | 10.0.0.13  | Linux            |
+| Elk      | Elkstack | 10.1.0.4   | Linux            |
 
 ### Access Policies
 
