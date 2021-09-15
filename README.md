@@ -25,19 +25,19 @@ Load balancing ensures that the application will be highly redundent, in additio
 - _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
+- Filebate monitors for log files by collecting events and forwarding them to Elasticsearch. 
+- Metricbeat collects statistics and metrics such as connection locations, errors, and more where it then forwards the data to Elasticsearch. 
 
 The configuration details of each machine may be found below.
 
 | Name     | Function      | IP Address      | Operating System |
 |----------|---------------|-----------------|------------------|
 | Jump Box | Gateway       | 10.0.0.4        | Linux            |
-| Web-1    | DVWS          | 10.0.0.5        | Linux            |
-| Web-2    | DVWS          | 10.0.0.8        | Linux            |
-| Web-3    | DVWS          | 10.0.0.13       | Linux            |
+| Web-1    | DVWA          | 10.0.0.5        | Linux            |
+| Web-2    | DVWA          | 10.0.0.8        | Linux            |
+| Web-3    | DVWA          | 10.0.0.13       | Linux            |
 | Elk      | Elkstack      | 10.1.0.4        | Linux            |
-| DVWS LB  | Load Balancer | 52.156.77.158   | Linux            |
+| DVWA LB  | Load Balancer | 52.156.77.158   | Linux            |
 
 ### Access Policies
 
