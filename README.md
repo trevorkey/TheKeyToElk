@@ -24,20 +24,19 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 Load balancing ensures that the application will be highly redundent, in addition to restricting access to the network.
 - Load balancers can help prevent or mitigate DDoS and DoS attacks. While the Jump Box creates an administrator single point of entry into the network. 
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system logs.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the network and system logs.
 - Filebate monitors for log files by collecting events and forwarding them to Elasticsearch. 
 - Metricbeat collects statistics and metrics such as connection locations, errors, and more where it then forwards the data to Elasticsearch. 
 
 The configuration details of each machine may be found below.
 
-| Name     | Function      | IP Address      | Operating System |
-|----------|---------------|-----------------|------------------|
-| Jump Box | Gateway       | 10.0.0.4        | Linux            |
-| Web-1    | DVWA          | 10.0.0.5        | Linux            |
-| Web-2    | DVWA          | 10.0.0.8        | Linux            |
-| Web-3    | DVWA          | 10.0.0.13       | Linux            |
-| Elk      | Elkstack      | 10.1.0.4        | Linux            |
-| DVWA LB  | Load Balancer | 52.156.77.158   | Linux            |
+| Name     | Function  | IP Address  | Operating System |
+|----------|-----------|-------------|------------------|
+| Jump Box | Gateway   | 10.0.0.4    | Linux            |
+| Web-1    | DVWA      | 10.0.0.5    | Linux            |
+| Web-2    | DVWA      | 10.0.0.8    | Linux            |
+| Web-3    | DVWA      | 10.0.0.13   | Linux            |
+| Elk      | Elkstack  | 10.1.0.4    | Linux            |
 
 ### Access Policies
 
@@ -60,7 +59,7 @@ A summary of the access policies in place can be found in the table below.
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+- The main advantage of automating configuration with Ansible _TODO: What is the main advantage of automating configuration with Ansible?_
 
 The playbook implements the following tasks:
 - _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
@@ -80,7 +79,8 @@ This ELK server is configured to monitor the following machines:
 | Web-3    | 10.0.0.13  |
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+- MetricBeat
+- FileBeat
 
 These Beats allow us to collect the following information from each machine:
 - _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
