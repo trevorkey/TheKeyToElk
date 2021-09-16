@@ -55,9 +55,9 @@ A summary of the access policies in place can be found in the table below.
 | Jump Box      | Yes                 | 91.162.345.62        |
 | ELK VM        | Yes                 | 91.162.345.62        |
 | Load Balancer | Yes                 | 52.156.77.158        |
-| Web-1         | No                  | 10.0.04 10.1.0.4     |
-| Web-2         | No                  | 10.0.04 10.1.0.4     |
-| Web-3         | No                  | 10.0.04 10.1.0.4     |
+| Web-1         | No                  | 10.0.05 10.1.0.4     |
+| Web-2         | No                  | 10.0.05 10.1.0.4     |
+| Web-3         | No                  | 10.0.05 10.1.0.4     |
 
 ### Elk Configuration
 
@@ -71,7 +71,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+![TODO: Update the path with the name of your screenshot of docker ps output](https://github.com/trevorkey/TheKeyToElk/blob/master/Diagrams/Docker_PS_output.PNG)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -86,15 +86,16 @@ We have installed the following Beats on these machines:
 - FileBeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- FileBeat monitors system logs and specific locations including sudo commands, system logins, etc. 
+- MetricBeat monitors the systems metrics such as connected IPs, IP locations, etc. 
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the Playbook.yml file to the control node.
+- Update the Hosts file to include network IP Addresses
+- Run the playbook, and navigate to http://(ElkIPAddress):5601/app/kibana to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
