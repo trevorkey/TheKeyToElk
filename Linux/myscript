@@ -1,0 +1,6 @@
+#!/bin/bash
+
+name='tk'
+
+echo "Hello $name"
+echo "Welcome to my script"
