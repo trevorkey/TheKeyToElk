@@ -45,26 +45,29 @@ The machines on the internal network are not exposed to the public Internet.
 Only the Jump Box Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - 91.162.345.62
 
-Machines within the network can only be accessed by the Jump Box Provisioner ansible container.
+Machines within the network can only be accessed by the Jump Box Provisioner.
 - 10.0.0.4
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes                 | 91.162.345.62        |
-| ELK VM   | Yes                 | 91.162.345.62        |
-| Web-1    | Yes                 | 52.156.77.158        |
+| Name          | Publicly Accessible | Allowed IP Addresses |
+|---------------|---------------------|----------------------|
+| Jump Box      | Yes                 | 91.162.345.62        |
+| ELK VM        | Yes                 | 91.162.345.62        |
+| Load Balancer | Yes                 | 52.156.77.158        |
+| Web-1         | No                  | 10.0.04 10.1.0.4     |
+| Web-2         | No                  | 10.0.04 10.1.0.4     |
+| Web-3         | No                  | 10.0.04 10.1.0.4     |
 
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- The main advantage of automating configuration with Ansible _TODO: What is the main advantage of automating configuration with Ansible?_
+- The main advantage of Ansible is automation of configuration. 
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Install Docker.io
+- Install Python 3
+- Download and install Elk docker container
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
