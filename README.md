@@ -97,9 +97,11 @@ SSH into the control node and follow the steps below:
 - Update the Hosts file to include network IP Addresses
 - Run the playbook.yml file(s), and navigate to http://(ElkIPAddress):5601/app/kibana to check that the installation worked as expected.
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+### Using the Playbook Pt.2 
+- Copy the multiple .yml files from /TheKeyToElk/Ansible to the jumpbox ansible continaer. 
+- Update the Hosts file to include two sections [elk] [webservers] with each having their respective VM IPs directly under them. 
+- Also in the Hosts file, update server IPs with Python3. 
+- Navigate to http://(ElkIPAddress):5601/app/kibana to make sure the elk server is running. 
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+### Step by step commands
+
